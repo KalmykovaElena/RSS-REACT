@@ -8,9 +8,13 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "npx eslint ./src",
-    "lint:fix": "npx eslint ./src --fix",
-    "prepare": "husky install"
+    "lint:fix": "npx eslint ./src --fix"
   },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "npm run lint:fix"
+    ]
+},
   "dependencies": {
     "eslint-import-resolver-typescript": "^3.5.3",
     "eslint-plugin-import": "^2.27.5",
@@ -40,11 +44,5 @@
       "pragma": "React",
       "version": "detect"
     }
-  },
-  "lint-staged": {
-    "*.(js|jsx|cjs)": [
-      "npm run lint:fix",
-      "git add"
-    ]
   }
 }
