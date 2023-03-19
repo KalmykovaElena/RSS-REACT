@@ -25,9 +25,9 @@ class HeaderCaption extends Component<WithRouterProps> {
   }
   render() {
     return (
-      <div className="header__caption">
+      <h2 className="header__caption">
         Current page: {this.state.currentPage}
-      </div>
+      </h2>
     );
   }
 }
