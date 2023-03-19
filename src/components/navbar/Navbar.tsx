@@ -5,7 +5,7 @@ export default class Navbar extends Component {
     return (
       <nav>
         <NavLink to="/">Main</NavLink>
-        <NavLink to="/about">AboutUs</NavLink>
+        <NavLink to="/about-us">AboutUs</NavLink>
       </nav>
     );
   }

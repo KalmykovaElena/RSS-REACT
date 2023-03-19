@@ -8,13 +8,11 @@ import AboutUs from '../pages/about/AboutUs';
 export default class App extends Component {
   render() {
     return (
-      <div>
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     );
   }
 }

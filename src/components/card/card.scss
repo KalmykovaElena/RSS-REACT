@@ -1,0 +1,13 @@
+.card{
+    max-width: 200px;
+    &__img{
+        margin:3%;
+
+        &-src{
+            width: 100%;
+        }
+    }
+    .details{
+        color:#677272
+    }
+}

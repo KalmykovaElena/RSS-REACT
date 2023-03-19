@@ -13,7 +13,7 @@
     "test": "vitest"
   },
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": [
+    "**/*.{ts,tsx}": [
       "npm run lint:fix"
     ]
   },
