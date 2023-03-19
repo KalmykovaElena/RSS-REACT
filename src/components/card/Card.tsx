@@ -6,7 +6,7 @@ export default class Card extends Component<{ item: Item }> {
   render() {
     const { item } = this.props;
     return (
-      <div className="card">
+      <li className="card">
         <div className="card__img">
           <img className="card__img-src" src={item.img} alt={item.name} />
         </div>
@@ -41,7 +41,7 @@ export default class Card extends Component<{ item: Item }> {
             {item.price}
           </span>
         </div>
-      </div>
+      </li>
     );
   }
 }

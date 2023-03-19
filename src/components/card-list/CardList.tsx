@@ -7,11 +7,11 @@ export default class CardList extends Component<{ data: Item[] }> {
   render() {
     const { data } = this.props;
     return (
-      <div className="cardsList">
+      <ul className="cardsList">
         {data.map((el) => {
           return <Card key={el.id} item={el} />;
         })}
-      </div>
+      </ul>
     );
   }
 }
