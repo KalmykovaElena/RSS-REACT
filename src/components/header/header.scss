@@ -1,0 +1,22 @@
+.header{
+    display:flex;
+    justify-content: space-between;
+    font-size: 2rem;
+    &__caption, a{
+       padding: 15px;
+       background-color: #80808059;
+       border-radius: 7px;
+       color:antiquewhite;
+    }
+    a{
+        text-decoration: none;
+        &:hover {
+            background-color: rgb(65 91 119 / 35%);
+        }
+       
+    }
+    .active{
+        background-color: rgb(65 91 119 / 35%);
+    }
+
+}

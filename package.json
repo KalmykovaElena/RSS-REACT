@@ -9,12 +9,12 @@
     "preview": "vite preview",
     "lint": "npx eslint ./src",
     "lint:fix": "npx eslint ./src --fix",
+    "prepare": "husky install",
     "test": "vitest"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
-      "npm run lint:fix",
-      "git add"
+      "npm run lint:fix"
     ]
   },
   "prettier": {
@@ -25,6 +25,7 @@
     "eslint-plugin-import": "^2.27.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.9.0",
     "sass": "^1.59.3"
   },
   "devDependencies": {
