@@ -18,3 +18,8 @@ export interface Item {
   stock: number;
   description: string;
 }
+
+export interface CardProps {
+  data: Item[];
+  searchValue: string;
+}

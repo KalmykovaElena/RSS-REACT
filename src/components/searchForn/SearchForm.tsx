@@ -1,27 +1,21 @@
 import React from 'react';
 import { Component } from 'react';
 import './searchForm.scss';
-class SearchForm extends Component {
-  state = {
-    inputValue: localStorage.getItem('searchValue') || '',
-  };
-
-  componentDidMount(): void {
-    this.setState({
-      inputValue: localStorage.getItem('searchValue') || '',
-    });
-  }
+class SearchForm extends Component<{
+  changeSearchVal: (value: string) => void;
+  searchValue: string;
+}> {
   componentWillUnmount(): void {
-    localStorage.setItem('searchValue', this.state.inputValue);
+    localStorage.setItem('searchValue', this.props.searchValue);
   }
   render() {
-    const { inputValue } = this.state;
+    const { searchValue } = this.props;
     return (
       <div className="persistent-form">
         <input
           className="persistent-form__input"
           type="text"
-          value={inputValue}
+          value={searchValue}
           onChange={this.handleChange}
         />
         <button className="persistent-form__button">Search</button>
@@ -31,9 +25,7 @@ class SearchForm extends Component {
   handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
     if (target) {
-      this.setState({
-        inputValue: target.value,
-      });
+      this.props.changeSearchVal(target.value);
     }
   };
 }

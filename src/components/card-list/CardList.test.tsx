@@ -6,7 +6,7 @@ import React from 'react';
 
 describe('CardList', () => {
   it('CardList render all items', () => {
-    render(<CardList data={goods} />);
+    render(<CardList data={goods} searchValue="" />);
     const list = screen.getByRole('list');
     const { getAllByRole } = within(list);
     const items = getAllByRole('listitem');
