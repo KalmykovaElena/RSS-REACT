@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { withHeaderHoc } from '../../hoc/withHeaderHoc';
 
-class AboutUs extends Component {
+class Forms extends Component {
   render() {
     return (
       <>
-        <main>AboutUs</main>
+        <main>Forms</main>
       </>
     );
   }
 }
-export default withHeaderHoc(AboutUs);
+export default withHeaderHoc(Forms);

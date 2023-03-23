@@ -6,6 +6,7 @@ export default class Navbar extends Component {
       <nav>
         <NavLink to="/">Main</NavLink>
         <NavLink to="/about-us">AboutUs</NavLink>
+        <NavLink to="/forms">Forms</NavLink>
       </nav>
     );
   }

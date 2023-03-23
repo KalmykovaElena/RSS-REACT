@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { goods } from '../../../common/data';
 import CardList from '../../card-list/CardList';
-import Header from '../../header/Header';
+import { withHeaderHoc } from '../../hoc/withHeaderHoc';
 import SearchForm from '../../searchForn/SearchForm';
 
 class Main extends Component {
@@ -17,7 +17,6 @@ class Main extends Component {
     const cardList = goods;
     return (
       <>
-        <Header />
         <main>
           <SearchForm
             changeSearchVal={this.changeSearchVal}
@@ -30,4 +29,4 @@ class Main extends Component {
   }
 }
 
-export default Main;
+export default withHeaderHoc(Main);

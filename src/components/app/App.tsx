@@ -4,6 +4,7 @@ import './App.scss';
 import Main from '../pages/main/Main';
 import NotFound from '../pages/notFound/NotFound';
 import AboutUs from '../pages/about/AboutUs';
+import Forms from '../pages/forms/Forms';
 
 export default class App extends Component {
   render() {
@@ -11,6 +12,7 @@ export default class App extends Component {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/forms" element={<Forms />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     );
