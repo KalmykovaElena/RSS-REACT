@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { withLocationHoc, WithRouterProps } from '../hoc/withLocationHoc';
+import {
+  withLocationHoc,
+  WithRouterProps,
+} from '../../common/hoc/withLocationHoc';
 import { HeaderProps } from '../types';
 
 class HeaderCaption extends Component<WithRouterProps> {

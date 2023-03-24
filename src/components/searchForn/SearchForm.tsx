@@ -5,9 +5,6 @@ class SearchForm extends Component<{
   changeSearchVal: (value: string) => void;
   searchValue: string;
 }> {
-  componentWillUnmount(): void {
-    localStorage.setItem('searchValue', this.props.searchValue);
-  }
   render() {
     const { searchValue } = this.props;
     return (
@@ -17,8 +14,8 @@ class SearchForm extends Component<{
           type="text"
           value={searchValue}
           onChange={this.handleChange}
+          placeholder="filter goods"
         />
-        <button className="persistent-form__button">Search</button>
       </div>
     );
   }

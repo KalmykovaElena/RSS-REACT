@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
+    "dev": "vite --port 4000",
+    "build": " tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "npx eslint ./src",
     "lint:fix": "npx eslint ./src --fix",

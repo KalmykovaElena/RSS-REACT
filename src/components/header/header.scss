@@ -1,7 +1,10 @@
 .header{
     display:flex;
     justify-content: space-between;
-    font-size: 2rem;
+    font-size: 1rem;
+    &__caption{
+        margin: 0;
+    }
     &__caption, a{
         margin-right: 10px;
        color:antiquewhite;

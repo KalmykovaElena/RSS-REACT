@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { goods } from '../../../common/data';
 import CardList from '../../card-list/CardList';
-import { withHeaderHoc } from '../../hoc/withHeaderHoc';
+import { withHeaderHoc } from '../../../common/hoc/withHeaderHoc';
 import SearchForm from '../../searchForn/SearchForm';
 
 class Main extends Component {
@@ -12,6 +12,10 @@ class Main extends Component {
   changeSearchVal = (value: string) => {
     this.setState({ searchValue: value });
   };
+
+  componentDidUpdate(): void {
+    localStorage.setItem('searchValue', this.state.searchValue);
+  }
 
   render() {
     const cardList = goods;
