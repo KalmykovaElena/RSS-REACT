@@ -83,6 +83,7 @@ class SubmitForm extends Component<{
                 className="form-element__input"
                 ref={nameRef}
                 required
+                data-testid="nameInput"
               />
             </label>
             <div className="inputError">{error.name}</div>
@@ -97,6 +98,7 @@ class SubmitForm extends Component<{
                 className="form-element__input"
                 ref={lastNameRef}
                 required
+                data-testid="lastNameInput"
               />
             </label>
             <div className="inputError">{error.lastName}</div>
@@ -111,6 +113,7 @@ class SubmitForm extends Component<{
                 className="form-element__input"
                 ref={birthdayRef}
                 required
+                data-testid="birthdayInput"
               />
             </label>
             <div className="inputError">{error.birthday}</div>
@@ -127,6 +130,7 @@ class SubmitForm extends Component<{
                 value="male"
                 name="gender"
                 required
+                data-testid="radioInput1"
               />
             </label>
             <label>
@@ -137,6 +141,7 @@ class SubmitForm extends Component<{
                 name="gender"
                 value="female"
                 required
+                data-testid="radioInput2"
               />
             </label>
             <div className="inputError">{error.gender}</div>
@@ -145,9 +150,11 @@ class SubmitForm extends Component<{
             <div className="form-element  select">
               <label className="form-element__label">
                 <span> Choose your country: </span>
-                <select name="country" ref={countryRef}>
+                <select name="country" ref={countryRef} data-testid="select">
                   <option>Russia </option>
                   <option>Belarus </option>
+                  <option>Ukraine </option>
+                  <option>Poland </option>
                   <option>Other </option>
                 </select>
               </label>
@@ -182,6 +189,7 @@ class SubmitForm extends Component<{
                 type="file"
                 className="form-element__input"
                 ref={fileRef}
+                data-testid="inputFile"
               />
             </label>
             <div className="inputError">{error.fileday}</div>
@@ -192,6 +200,7 @@ class SubmitForm extends Component<{
               type="submit"
               value="Send"
               className="form-element__submit"
+              data-testid="submitInput"
             />
           </div>
         </form>

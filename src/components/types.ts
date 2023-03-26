@@ -31,7 +31,7 @@ export interface SubmitFormItem {
   gender?: string;
   aducation?: string;
   file?: string;
-  countryRef?: string;
+  country?: string;
 }
 
 export type FormError = {
