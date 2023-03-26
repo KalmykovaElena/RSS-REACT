@@ -20,7 +20,7 @@ export default class SubmitCard extends Component<{ data: SubmitFormItem }> {
                 return (
                   <li key={i}>
                     <span>{`${el[0]}: `}</span>
-                    <span>{`${el[1]} `}</span>
+                    <span className="user-card__value">{`${el[1]} `}</span>
                   </li>
                 );
               }
