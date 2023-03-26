@@ -23,3 +23,17 @@ export interface CardProps {
   data: Item[];
   searchValue: string;
 }
+export interface SubmitFormItem {
+  id: number;
+  name?: string;
+  lastName?: string;
+  birthday?: string;
+  gender?: string;
+  aducation?: string;
+  file?: string;
+  countryRef?: string;
+}
+
+export type FormError = {
+  [key: string]: string; // 👈️ variable key
+};

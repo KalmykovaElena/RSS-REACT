@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
 import { withHeaderHoc } from '../../../common/hoc/withHeaderHoc';
+import SubmitForm from './submitForm/SubmitForm';
+import { SubmitFormItem } from '../../types';
+import './formPage.scss';
+import UserCards from './userCards/UserCards';
 
 class FormsPage extends Component {
+  state = {
+    data: [],
+  };
+  handlerForm = (object: SubmitFormItem) => {
+    this.setState({
+      data: [...this.state.data, object],
+    });
+  };
   render() {
     return (
       <>
-        <main>Forms</main>
+        <SubmitForm handlerForm={this.handlerForm} />
+        <UserCards cardsArray={this.state.data} />
       </>
     );
   }
