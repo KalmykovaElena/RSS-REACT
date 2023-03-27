@@ -2,7 +2,27 @@ import { FormError, SubmitFormItem } from '../components/types';
 
 export const validateForm = (object: SubmitFormItem) => {
   const errorObject = {} as FormError;
-
+  if (!object.name) {
+    errorObject.name = 'Please enter a name';
+  }
+  if (!object.lastName) {
+    errorObject.lastName = 'Please enter your last name';
+  }
+  if (!object.birthday) {
+    errorObject.birthday = 'Please choose your birthday';
+  }
+  if (!object.gender) {
+    errorObject.gender = 'Please choose your gender';
+  }
+  if (!object.checkbox) {
+    errorObject.checkbox = 'Please choose your education';
+  }
+  if (!object.file) {
+    errorObject.file = 'Please choose profile image';
+  }
+  if (object.country === 'Select country') {
+    errorObject.country = 'Please choose your country';
+  }
   if (object.name) {
     if (object.name.length < 3) {
       errorObject.name = 'The name must contain at least 3 characters';

@@ -32,6 +32,7 @@ export interface SubmitFormItem {
   aducation?: string;
   file?: string;
   country?: string;
+  checkbox?: string;
 }
 
 export type FormError = {

@@ -8,7 +8,6 @@ export const createFormData = (
 ) => {
   for (const key in refs) {
     const objKey = key.replace('Ref', '').replace(/([0-9])/, '');
-    console.log(objKey);
     const form = refs[key as keyof typeof refs].current;
     if (objKey === 'gender' && form instanceof HTMLInputElement) {
       if (form?.checked) obj[objKey] = form.value;

@@ -75,14 +75,11 @@ class SubmitForm extends Component<{
         <form onSubmit={this.handlerSubmit} className="form">
           <div className="form-element">
             <label className="form-element__label">
-              <span>
-                Name <span className="required">*</span>
-              </span>
+              <span>Name</span>
               <input
                 type="text"
                 className="form-element__input"
                 ref={nameRef}
-                required
                 data-testid="nameInput"
               />
             </label>
@@ -90,14 +87,11 @@ class SubmitForm extends Component<{
           </div>
           <div className="form-element">
             <label className="form-element__label">
-              <span>
-                LastName <span className="required">*</span>
-              </span>
+              <span>LastName</span>
               <input
                 type="text"
                 className="form-element__input"
                 ref={lastNameRef}
-                required
                 data-testid="lastNameInput"
               />
             </label>
@@ -105,23 +99,18 @@ class SubmitForm extends Component<{
           </div>
           <div className="form-element">
             <label className="form-element__label">
-              <span>
-                Birthday <span className="required">*</span>
-              </span>
+              <span>Birthday</span>
               <input
                 type="date"
                 className="form-element__input"
                 ref={birthdayRef}
-                required
                 data-testid="birthdayInput"
               />
             </label>
             <div className="inputError">{error.birthday}</div>
           </div>
           <div className="form-element  radio">
-            <span>
-              Gender <span className="required">*</span>
-            </span>
+            <span>Gender</span>
             <label>
               male
               <input
@@ -129,7 +118,6 @@ class SubmitForm extends Component<{
                 ref={genderRef}
                 value="male"
                 name="gender"
-                required
                 data-testid="radioInput1"
               />
             </label>
@@ -140,7 +128,6 @@ class SubmitForm extends Component<{
                 ref={gender}
                 name="gender"
                 value="female"
-                required
                 data-testid="radioInput2"
               />
             </label>
@@ -151,6 +138,7 @@ class SubmitForm extends Component<{
               <label className="form-element__label">
                 <span> Choose your country: </span>
                 <select name="country" ref={countryRef} data-testid="select">
+                  <option>Select country</option>
                   <option>Russia </option>
                   <option>Belarus </option>
                   <option>Ukraine </option>
@@ -158,7 +146,7 @@ class SubmitForm extends Component<{
                   <option>Other </option>
                 </select>
               </label>
-              <div className="inputError">{error.aducation}</div>
+              <div className="inputError">{error.country}</div>
             </div>
 
             <div className="form-element  checkbox">
@@ -180,6 +168,7 @@ class SubmitForm extends Component<{
                 <input type="checkbox" ref={aducationRef3} value="courses " />
                 <span>courses</span>
               </label>
+              <div className="inputError checkbox-error">{error.checkbox}</div>
             </div>
           </div>
           <div className="form-element">
@@ -192,7 +181,7 @@ class SubmitForm extends Component<{
                 data-testid="inputFile"
               />
             </label>
-            <div className="inputError">{error.fileday}</div>
+            <div className="inputError">{error.file}</div>
           </div>
 
           <div className="form-element">
