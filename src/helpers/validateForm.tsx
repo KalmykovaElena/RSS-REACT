@@ -14,7 +14,7 @@ export const validateForm = (object: SubmitFormItem) => {
   if (!object.gender) {
     errorObject.gender = 'Please choose your gender';
   }
-  if (!object.checkbox) {
+  if (!object.aducation) {
     errorObject.checkbox = 'Please choose your education';
   }
   if (!object.file) {
@@ -23,6 +23,8 @@ export const validateForm = (object: SubmitFormItem) => {
   if (object.country === 'Select country') {
     errorObject.country = 'Please choose your country';
   }
+  console.log(object);
+  console.log(errorObject);
   if (object.name) {
     if (object.name.length < 3) {
       errorObject.name = 'The name must contain at least 3 characters';
