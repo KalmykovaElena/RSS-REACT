@@ -4,9 +4,11 @@ import { NavLink } from 'react-router-dom';
 const NotFound = () => {
   return (
     <main>
-      <div>404</div>
-      <div>Page not found</div>
-      <NavLink to="/">Main</NavLink>
+      <div data-testid="404">404</div>
+      <div data-testid="404-description">Page not found</div>
+      <NavLink data-testid="404-link" to="/">
+        Main
+      </NavLink>
     </main>
   );
 };
