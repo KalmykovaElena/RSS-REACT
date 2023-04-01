@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Header from '../../components/header/Header';
 
 export const withHeaderHoc = (ViewComponent: React.ComponentType) => {
-  return class extends Component {
-    render() {
-      return (
-        <>
-          <Header />
-          <ViewComponent />
-        </>
-      );
-    }
+  return function () {
+    return (
+      <>
+        <Header />
+        <ViewComponent />
+      </>
+    );
   };
 };

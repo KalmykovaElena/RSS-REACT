@@ -23,6 +23,7 @@ export interface CardProps {
   data: Item[];
   searchValue: string;
 }
+
 export interface SubmitFormItem {
   id: number;
   name?: string;

@@ -1,30 +1,28 @@
 import React from 'react';
-import { Component } from 'react';
 import './searchForm.scss';
-class SearchForm extends Component<{
+
+const SearchForm = (props: {
   changeSearchVal: (value: string) => void;
   searchValue: string;
-}> {
-  render() {
-    const { searchValue } = this.props;
-    return (
-      <div className="persistent-form">
-        <input
-          className="persistent-form__input"
-          type="text"
-          value={searchValue}
-          onChange={this.handleChange}
-          placeholder="filter goods"
-        />
-      </div>
-    );
-  }
-  handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+}) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
     if (target) {
-      this.props.changeSearchVal(target.value);
+      props.changeSearchVal(target.value);
     }
   };
-}
+  const { searchValue } = props;
+  return (
+    <div className="persistent-form">
+      <input
+        className="persistent-form__input"
+        type="text"
+        value={searchValue}
+        onChange={handleChange}
+        placeholder="filter goods"
+      />
+    </div>
+  );
+};
 
 export default SearchForm;
