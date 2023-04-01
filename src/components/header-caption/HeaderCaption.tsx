@@ -1,37 +1,21 @@
-import React, { Component } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   withLocationHoc,
   WithRouterProps,
 } from '../../common/hoc/withLocationHoc';
-import { HeaderProps } from '../types';
 
-class HeaderCaption extends Component<WithRouterProps> {
-  state = {
-    currentPage: '',
-  };
-  handlePage() {
-    const { pathname } = this.props.location;
-    this.setState({
-      currentPage: pathname.slice(1) || 'main',
-    });
-  }
-  componentDidMount(): void {
-    this.handlePage();
-  }
-  componentDidUpdate(prevProps: Readonly<HeaderProps>): void {
-    if (
-      prevProps.location.pathname.slice(1) !==
-      this.props.location.pathname.slice(1)
-    ) {
-      this.handlePage();
-    }
-  }
-  render() {
-    return (
-      <h2 className="header__caption">
-        Current page: {this.state.currentPage}
-      </h2>
-    );
-  }
-}
+const HeaderCaption = (props: WithRouterProps) => {
+  const [currentPage, setCurrentPage] = useState('');
+
+  const handlePage = useCallback(() => {
+    const { pathname } = props.location;
+    setCurrentPage(pathname.slice(1) || 'main');
+  }, [props.location]);
+
+  useEffect(() => {
+    handlePage();
+  }, [handlePage]);
+
+  return <h2 className="header__caption">Current page: {currentPage}</h2>;
+};
 export default withLocationHoc(HeaderCaption);
