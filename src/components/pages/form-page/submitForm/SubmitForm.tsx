@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FieldValues } from 'react-hook-form/dist/types';
+import { Value } from 'sass';
 import { SubmitFormItem } from '../../../types';
 import './submitForm.scss';
 
@@ -11,7 +12,9 @@ const SubmitForm = (props: { handlerForm: (obj: SubmitFormItem) => void }) => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm();
+  } = useForm({
+    reValidateMode: 'onSubmit',
+  });
 
   const onSubmit = (data: FieldValues) => {
     const formData: SubmitFormItem = {
@@ -195,7 +198,13 @@ const SubmitForm = (props: { handlerForm: (obj: SubmitFormItem) => void }) => {
               type="file"
               className="form-element__input"
               {...register('file', {
-                required: 'Please choose your profile image',
+                validate: {
+                  notEmpty: (value) =>
+                    value.length > 0 || 'Please choose your profile image',
+                  typeImg: (value) =>
+                    (value.length > 0 && value[0].type.startsWith('image')) ||
+                    'File must be an image',
+                },
               })}
               data-testid="inputFile"
             />
