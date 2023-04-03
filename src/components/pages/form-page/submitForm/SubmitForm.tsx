@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FieldValues } from 'react-hook-form/dist/types';
-import { Value } from 'sass';
 import { SubmitFormItem } from '../../../types';
 import './submitForm.scss';
 

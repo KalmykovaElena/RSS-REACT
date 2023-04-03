@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { goods } from '../../../common/data';
 import CardList from '../../card-list/CardList';
 import { withHeaderHoc } from '../../../common/hoc/withHeaderHoc';
@@ -8,10 +8,19 @@ const Main = () => {
   const [searchValue, setSearchValue] = useState(
     localStorage.getItem('searchValue') || ''
   );
+  const valuesRef = useRef(searchValue);
 
   useEffect(() => {
-    localStorage.setItem('searchValue', searchValue);
+    valuesRef.current = searchValue;
   }, [searchValue]);
+  useEffect(() => {
+    return function unmount() {
+      console.log('component unmount');
+      console.log(valuesRef.current);
+
+      localStorage.setItem('searchValue', valuesRef.current);
+    };
+  }, []);
 
   const cardList = goods;
   return (
