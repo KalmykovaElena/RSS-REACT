@@ -16,9 +16,6 @@ const Main = () => {
   }, [searchValue]);
   useEffect(() => {
     return function unmount() {
-      console.log('component unmount');
-      console.log(valuesRef.current);
-
       localStorage.setItem('searchValue', valuesRef.current);
     };
   }, []);
