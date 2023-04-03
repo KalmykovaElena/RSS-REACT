@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { goods } from '../../../common/data';
 import CardList from '../../card-list/CardList';
 import { withHeaderHoc } from '../../../common/hoc/withHeaderHoc';
 import SearchForm from '../../searchForn/SearchForm';
+import { useBeforeUnload } from 'react-router-dom';
 
 const Main = () => {
   const [searchValue, setSearchValue] = useState(
@@ -21,6 +22,11 @@ const Main = () => {
       localStorage.setItem('searchValue', valuesRef.current);
     };
   }, []);
+  useBeforeUnload(
+    useCallback(() => {
+      localStorage.setItem('searchValue', valuesRef.current);
+    }, [])
+  );
 
   const cardList = goods;
   return (
