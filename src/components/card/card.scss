@@ -1,0 +1,14 @@
+.card{
+    max-width: 200px;
+    list-style: none;
+    &__img{
+        margin:3%;
+
+        &-src{
+            width: 100%;
+        }
+    }
+    .details{
+        color:#677272
+    }
+}
