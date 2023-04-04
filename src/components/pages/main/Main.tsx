@@ -18,7 +18,7 @@ const Main = () => {
     return function unmount() {
       localStorage.setItem('searchValue', valuesRef.current);
     };
-  }, []);
+  });
   useBeforeUnload(
     useCallback(() => {
       localStorage.setItem('searchValue', valuesRef.current);
