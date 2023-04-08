@@ -1,27 +1,30 @@
 import React from 'react';
 import './searchForm.scss';
+import { useForm } from 'react-hook-form';
 
 const SearchForm = (props: {
   changeSearchVal: (value: string) => void;
   searchValue: string;
 }) => {
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const target = event.target as HTMLInputElement;
-    if (target) {
-      props.changeSearchVal(target.value);
-    }
+  const { register, handleSubmit, reset } = useForm();
+  const onSubmit = (value: { [key: string]: string }) => {
+    props.changeSearchVal(value.searchValue);
+    reset();
   };
-  const { searchValue } = props;
   return (
-    <div className="persistent-form">
+    <form className="persistent-form" onSubmit={handleSubmit(onSubmit)}>
       <input
         className="persistent-form__input"
         type="text"
-        value={searchValue}
-        onChange={handleChange}
-        placeholder="filter goods"
+        {...register('searchValue')}
+        placeholder="find a hero"
       />
-    </div>
+      <input
+        className="persistent-form__input search"
+        type="submit"
+        value={'Search'}
+      />
+    </form>
   );
 };
 

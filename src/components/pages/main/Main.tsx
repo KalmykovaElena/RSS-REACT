@@ -1,39 +1,52 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { goods } from '../../../common/data';
+import React, { useEffect, useState } from 'react';
 import CardList from '../../card-list/CardList';
 import { withHeaderHoc } from '../../../common/hoc/withHeaderHoc';
 import SearchForm from '../../searchForn/SearchForm';
-import { useBeforeUnload } from 'react-router-dom';
+import { transformData } from '../../../helpers/transformData';
+import { Item } from '../../types';
+import Loader from '../../loader/Loader';
+import Pagination from '../../paginationBlock/Pagination';
 
 const Main = () => {
   const [searchValue, setSearchValue] = useState(
     localStorage.getItem('searchValue') || ''
   );
-  const valuesRef = useRef(searchValue);
+  const [cardList, setCardList] = useState<Item[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [pagesCount, setPagesCount] = useState(1);
 
   useEffect(() => {
-    valuesRef.current = searchValue;
-  }, [searchValue]);
-  useEffect(() => {
-    return function unmount() {
-      localStorage.setItem('searchValue', valuesRef.current);
-    };
-  });
-  useBeforeUnload(
-    useCallback(() => {
-      localStorage.setItem('searchValue', valuesRef.current);
-    }, [])
-  );
+    setIsLoading(true);
+    const url = searchValue
+      ? `https://swapi.dev/api/people/?search=${searchValue}`
+      : `https://swapi.dev/api/people/?page=${page}`;
+    fetch(url)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setIsLoading(false);
+        setCardList(transformData(data.results));
+        setPagesCount(Math.ceil(data.count / 10));
+      });
+  }, [searchValue, page]);
 
-  const cardList = goods;
+  const handleSubmit = (value: string) => {
+    setSearchValue(value);
+    setIsLoading(true);
+    localStorage.setItem('searchValue', value);
+  };
   return (
     <>
       <main>
-        <SearchForm
-          changeSearchVal={setSearchValue}
-          searchValue={searchValue}
-        />
-        <CardList data={cardList} searchValue={searchValue} />
+        <SearchForm changeSearchVal={handleSubmit} searchValue={searchValue} />
+        {!searchValue && pagesCount > 1 && (
+          <Pagination length={pagesCount} onClick={setPage} page={page} />
+        )}
+
+        {isLoading ? <Loader /> : <CardList data={cardList} />}
       </main>
     </>
   );
