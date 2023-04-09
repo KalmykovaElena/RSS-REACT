@@ -8,12 +8,12 @@ const Card = ({
   setModalId,
 }: {
   item: Item;
-  setModalId: Dispatch<SetStateAction<null | string>>;
+  setModalId?: Dispatch<SetStateAction<null | string>>;
 }) => {
   const [cardsLoading, setCardsLoading] = useState(true);
 
   return (
-    <li className="card" onClick={() => setModalId(item.id)}>
+    <li className="card" onClick={() => setModalId && setModalId(item.id)}>
       <div className="card__img">
         {cardsLoading && <Loader />}
         <img

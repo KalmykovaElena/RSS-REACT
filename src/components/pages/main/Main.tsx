@@ -7,6 +7,7 @@ import { Item } from '../../types';
 import Loader from '../../loader/Loader';
 import Pagination from '../../paginationBlock/Pagination';
 import ModalWindow from '../../modal-window/ModalWindow';
+import ErrorBlock from '../../../error/error';
 
 const Main = () => {
   const [searchValue, setSearchValue] = useState(
@@ -17,6 +18,7 @@ const Main = () => {
   const [modalId, setModalId] = useState<null | string>(null);
   const [page, setPage] = useState(1);
   const [pagesCount, setPagesCount] = useState(1);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
@@ -25,13 +27,24 @@ const Main = () => {
       : `https://swapi.dev/api/people/?page=${page}`;
     fetch(url)
       .then((res) => {
+        if (!res.ok) {
+          throw Error('could not fetch the data');
+        }
         return res.json();
       })
       .then((data) => {
-        console.log(data);
+        if (data.count < 1) {
+          throw Error('Nothing was found for your request.');
+        }
+        console.log(data.count > 0);
         setIsLoading(false);
         setCardList(transformData(data.results));
         setPagesCount(Math.ceil(data.count / 10));
+        setError(null);
+      })
+      .catch((err) => {
+        setIsLoading(false);
+        setError(err.message);
       });
   }, [searchValue, page]);
 
@@ -44,16 +57,22 @@ const Main = () => {
     <>
       <main>
         <SearchForm changeSearchVal={handleSubmit} searchValue={searchValue} />
-        {!searchValue && pagesCount > 1 && (
-          <Pagination length={pagesCount} onClick={setPage} page={page} />
-        )}
-
-        {isLoading ? (
-          <Loader />
+        {error ? (
+          <ErrorBlock message={error} />
         ) : (
-          <CardList data={cardList} setModalId={setModalId} />
+          <>
+            {!searchValue && pagesCount > 1 && (
+              <Pagination length={pagesCount} onClick={setPage} page={page} />
+            )}
+
+            {isLoading ? (
+              <Loader />
+            ) : (
+              <CardList data={cardList} setModalId={setModalId} />
+            )}
+            <ModalWindow hasModalId={modalId} setModalId={setModalId} />
+          </>
         )}
-        <ModalWindow hasModalId={modalId} setModalId={setModalId} />
       </main>
     </>
   );

@@ -8,7 +8,7 @@ const CardList = ({
   setModalId,
 }: {
   data: Item[];
-  setModalId: Dispatch<SetStateAction<null | string>>;
+  setModalId?: Dispatch<SetStateAction<null | string>>;
 }) => {
   return (
     <ul className="cardsList">
