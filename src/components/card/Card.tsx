@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import Loader from '../loader/Loader';
 import { Item } from '../types';
 import './card.scss';
 
-const Card = (props: { item: Item }) => {
+const Card = ({
+  item,
+  setModalId,
+}: {
+  item: Item;
+  setModalId: Dispatch<SetStateAction<null | string>>;
+}) => {
   const [cardsLoading, setCardsLoading] = useState(true);
-  const item = props.item;
+
   return (
-    <li className="card">
+    <li className="card" onClick={() => setModalId(item.id)}>
       <div className="card__img">
         {cardsLoading && <Loader />}
         <img

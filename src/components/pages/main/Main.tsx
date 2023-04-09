@@ -6,6 +6,7 @@ import { transformData } from '../../../helpers/transformData';
 import { Item } from '../../types';
 import Loader from '../../loader/Loader';
 import Pagination from '../../paginationBlock/Pagination';
+import ModalWindow from '../../modal-window/ModalWindow';
 
 const Main = () => {
   const [searchValue, setSearchValue] = useState(
@@ -13,6 +14,7 @@ const Main = () => {
   );
   const [cardList, setCardList] = useState<Item[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [modalId, setModalId] = useState<null | string>(null);
   const [page, setPage] = useState(1);
   const [pagesCount, setPagesCount] = useState(1);
 
@@ -46,7 +48,12 @@ const Main = () => {
           <Pagination length={pagesCount} onClick={setPage} page={page} />
         )}
 
-        {isLoading ? <Loader /> : <CardList data={cardList} />}
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <CardList data={cardList} setModalId={setModalId} />
+        )}
+        <ModalWindow hasModalId={modalId} setModalId={setModalId} />
       </main>
     </>
   );

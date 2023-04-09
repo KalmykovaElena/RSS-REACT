@@ -1,0 +1,62 @@
+.modal{
+    width: 100vw;
+    height: 100vh;
+    background-color:rgb(153 176 186 / 54%);
+    position: fixed;
+    top:0;
+    left:0;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    opacity:0;
+    transition:.5s;
+    pointer-events: none;
+    &__active{
+        opacity: 1;
+        pointer-events: all;
+        cursor: pointer;
+    }
+}
+.modal-content{
+    padding-top: 15px;
+    position: relative;
+    width: 60%;
+    height: 50%;
+    background-color: rgb(27, 27, 26);
+    border-radius: 10px;
+    cursor: auto;
+    display: flex;
+    transform: scale(0);
+    transition: .5s;
+    &__active{
+        transform: scale(1)
+    }
+    &__img{
+        width:50%;
+        &-src{
+            max-width: 70%;
+            max-height: 70%;
+        }
+    }
+    .description{
+        
+        &__name{
+            color:antiquewhite
+        }
+     &__value{
+        font-size: 1.5rem;
+        color:rgb(142 224 213);
+     }
+    }
+}
+.modal__close{
+    cursor: pointer;
+    position: absolute;
+    right:13px;
+    top:5px;
+    color: red;
+    font-size: 2rem;
+    font-weight: bold;
+    width: 2rem;
+    height: 2rem;
+}
