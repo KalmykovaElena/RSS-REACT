@@ -30,15 +30,3 @@ export const transformModalData = (data: DataItem) => {
   };
   return obj;
 };
-
-function getData(url: string) {
-  const result = fetch(url)
-    .then((res) => {
-      return res.json();
-    })
-    .then((data) => {
-      return data.name;
-    });
-
-  return result;
-}

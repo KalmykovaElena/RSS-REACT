@@ -8,7 +8,7 @@ export default function ModalWindow({
   setModalId,
 }: {
   hasModalId: string | null;
-  setModalId: Dispatch<SetStateAction<null | string>>;
+  setModalId?: Dispatch<SetStateAction<null | string>>;
 }) {
   const [card, setCard] = useState<null | { [key: string]: string }>(null);
   const [error, setError] = useState(null);
@@ -33,7 +33,7 @@ export default function ModalWindow({
     card && (
       <div
         className={hasModalId ? 'modal modal__active' : 'modal'}
-        onClick={() => setModalId(null)}
+        onClick={() => setModalId!(null)}
       >
         <div
           className={
@@ -41,7 +41,7 @@ export default function ModalWindow({
           }
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="modal__close" onClick={() => setModalId(null)}>
+          <div className="modal__close" onClick={() => setModalId!(null)}>
             X
           </div>
           {error ? (
@@ -57,7 +57,7 @@ export default function ModalWindow({
               </div>
               <div className="modal-content__description">
                 <h2 className="description__name">{card.Name}</h2>
-                <ul>
+                <ul data-testid="modalItems">
                   {Object.entries(card).map((e, i) =>
                     e[1] && i > 0 ? (
                       <li className="description__item" key={i}>
