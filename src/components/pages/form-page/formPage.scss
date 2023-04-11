@@ -1,0 +1,16 @@
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap:10px;
+    margin-top: 15px;
+}
+.submitedNotice{
+    font-size: 3rem;
+    position: absolute;
+    left:30%;
+    top:-50%;
+    transition: .5s;
+}
+.submited{
+    top:0
+}
