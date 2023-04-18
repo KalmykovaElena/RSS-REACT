@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction, useEffect } from 'react';
 import Card from '../card/Card';
 import './card-list.scss';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
@@ -22,14 +22,16 @@ const CardList = ({
   });
   const { data: PEOPLE } = useGetPeopleQuery(searchValue);
   const dispatch = useAppDispatch();
-  dispatch(setPagesCount(Math.ceil(data && data.count / 10)));
   const error = useAppSelector((state) => state.data.error);
   const renderData = searchValue
     ? transformData(PEOPLE.results)
     : transformData(data.results);
-  if (renderData.length < 1) {
-    dispatch(setError('Nothing was found for your request.'));
-  }
+  useEffect(() => {
+    dispatch(setPagesCount(Math.ceil(data && data.count / 10)));
+    if (renderData.length < 1) {
+      dispatch(setError('Nothing was found for your request.'));
+    }
+  }, [data, dispatch, renderData.length]);
   return (
     <>
       {error ? (

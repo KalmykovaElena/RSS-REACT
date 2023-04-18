@@ -3,6 +3,8 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { vi, Mock } from 'vitest';
 import ModalWindow from './ModalWindow';
+import { Provider } from 'react-redux';
+import { store } from '../../redux/store';
 
 global.fetch = vi.fn(() =>
   Promise.resolve({
@@ -24,13 +26,14 @@ global.fetch = vi.fn(() =>
 const handler = vi.fn();
 describe('Modal window', () => {
   it('Render modal window', async () => {
-    render(<ModalWindow hasModalId="1" setModalId={handler} />);
-    expect(await screen.findByTestId('modalItems')).toBeInTheDocument();
-    expect(await screen.findByTestId('modalCardImg')).toBeInTheDocument();
-    expect(
-      await screen.findByRole('heading', {
-        level: 2,
-      })
-    ).toBeInTheDocument();
+    render(
+      <Provider store={store}>
+        <ModalWindow hasModalId="1" setModalId={handler} />
+      </Provider>
+    );
+    expect(await screen.findByTestId('modalWindow')).toBeInTheDocument();
+    expect(await screen.findByTestId('error')).toBeInTheDocument();
+    expect(await screen.findByTestId('modal__close')).toBeInTheDocument();
+    expect(await screen.findByRole('img')).toBeInTheDocument();
   });
 });
