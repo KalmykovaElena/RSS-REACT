@@ -14,7 +14,7 @@ export default function ModalWindow({
 
   return (
     <>
-      data && (
+      (
       <div
         data-testid="modalWindow"
         className={hasModalId ? 'modal modal__active' : 'modal'}
