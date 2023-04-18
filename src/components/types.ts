@@ -28,6 +28,14 @@ export interface DataItem {
   vehicles: string[];
 }
 
+export interface ApiData {
+  data: {
+    count: number;
+    next: string | null;
+    previous: string | null;
+    results: DataItem[];
+  };
+}
 export interface SubmitFormItem {
   id: number;
   name?: string;

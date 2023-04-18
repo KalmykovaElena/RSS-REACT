@@ -4,7 +4,7 @@ import SubmitCard from '../submitCard/SubmitCard';
 
 const UserCards = (props: { cardsArray: SubmitFormItem[] }) => {
   return (
-    <section className="cards">
+    <section data-testid="UserCards" className="cards">
       {props.cardsArray.map((el) => {
         const { id } = el;
         return <SubmitCard key={id} data={el} />;

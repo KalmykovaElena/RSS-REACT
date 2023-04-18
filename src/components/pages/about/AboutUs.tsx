@@ -4,7 +4,7 @@ import { withHeaderHoc } from '../../../common/hoc/withHeaderHoc';
 const AboutUs = () => {
   return (
     <>
-      <main>AboutUs</main>
+      <main data-testid="about_us_page">AboutUs</main>
     </>
   );
 };

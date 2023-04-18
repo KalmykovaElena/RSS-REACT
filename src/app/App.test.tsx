@@ -4,6 +4,8 @@ import { render, screen } from '@testing-library/react';
 import App from './App';
 import { MemoryRouter } from 'react-router-dom';
 import { vi } from 'vitest';
+import { Provider } from 'react-redux';
+import { store } from '../redux/store';
 
 test('render avalible pages', () => {
   const expectedResult = [
@@ -21,7 +23,9 @@ test('render avalible pages', () => {
   );
   render(
     <MemoryRouter>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </MemoryRouter>
   );
   const linkElement = screen.getByText(/Current page/i);

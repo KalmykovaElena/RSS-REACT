@@ -29,7 +29,7 @@ const SubmitForm = (props: { handlerForm: (obj: SubmitFormItem) => void }) => {
     reset();
   };
   return (
-    <main>
+    <main data-testid="submit-form">
       <div className={submited ? 'submitedNotice submited' : 'submitedNotice'}>
         The form has been sent
       </div>
