@@ -1,11 +1,12 @@
 import React from 'react';
-import { SubmitFormItem } from '../../../types';
 import SubmitCard from '../submitCard/SubmitCard';
+import { useAppSelector } from '../../../../redux/hooks';
 
-const UserCards = (props: { cardsArray: SubmitFormItem[] }) => {
+const UserCards = () => {
+  const cardsArray = useAppSelector((state) => state.submitData.submitData);
   return (
     <section data-testid="UserCards" className="cards">
-      {props.cardsArray.map((el) => {
+      {cardsArray.map((el) => {
         const { id } = el;
         return <SubmitCard key={id} data={el} />;
       })}

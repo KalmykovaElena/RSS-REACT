@@ -3,8 +3,10 @@ import { useForm } from 'react-hook-form';
 import { FieldValues } from 'react-hook-form/dist/types';
 import { SubmitFormItem } from '../../../types';
 import './submitForm.scss';
+import { useAppDispatch } from '../../../../redux/hooks';
+import { setSubmitData } from '../../../../redux/redusers/submitData';
 
-const SubmitForm = (props: { handlerForm: (obj: SubmitFormItem) => void }) => {
+const SubmitForm = () => {
   const [submited, setSubmited] = useState(false);
   const {
     register,
@@ -14,14 +16,14 @@ const SubmitForm = (props: { handlerForm: (obj: SubmitFormItem) => void }) => {
   } = useForm({
     reValidateMode: 'onSubmit',
   });
-
+  const dispatch = useAppDispatch();
   const onSubmit = (data: FieldValues) => {
     const formData: SubmitFormItem = {
       id: Date.now(),
       ...data,
       file: URL.createObjectURL(data.file[0]),
     };
-    props.handlerForm(formData);
+    dispatch(setSubmitData(formData));
     setSubmited(true);
     setTimeout(() => {
       setSubmited(false);

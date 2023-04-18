@@ -2,11 +2,16 @@ import { describe, expect } from 'vitest';
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import SubmitForm from './SubmitForm';
+import { Provider } from 'react-redux';
+import { store } from '../../../../redux/store';
 
 describe('SubmitForm page', () => {
   it('Render form items', () => {
-    const handlerForm = () => {};
-    render(<SubmitForm handlerForm={handlerForm} />);
+    render(
+      <Provider store={store}>
+        <SubmitForm />
+      </Provider>
+    );
     expect(screen.getByTestId('nameInput')).toBeInTheDocument();
     expect(screen.getByTestId('lastNameInput')).toBeInTheDocument();
     expect(screen.getByTestId('birthdayInput')).toBeInTheDocument();
