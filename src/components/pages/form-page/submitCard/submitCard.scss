@@ -1,0 +1,29 @@
+
+li{
+    list-style-type: none;
+    text-align: start;
+}
+.user-card{
+    display: flex;
+    background-color: rgb(73, 69, 69);
+    border-radius: 5px;
+    padding: 10px;
+    
+    &__img{
+        align-self: flex-start;
+        .img{
+        width: 150px;
+        border:1px solid #ffffff;
+        border-radius: 5px;
+        }
+    }
+    &__description{
+        padding-inline-start: 15px;
+        padding-inline-end: 5px;
+    }
+    &__value{
+        color:#f4e89f;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+}

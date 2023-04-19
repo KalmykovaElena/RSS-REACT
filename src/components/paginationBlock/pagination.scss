@@ -1,0 +1,16 @@
+.pagination-button{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: antiquewhite;
+    cursor: pointer;
+    &__current{
+        background-color: rgb(65 91 119 / 35%);
+        color:#ffffff;
+    }
+}
+.pagesList{
+    display: flex;
+    justify-content: flex-end;
+}

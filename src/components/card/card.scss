@@ -1,0 +1,25 @@
+.card{
+    max-width: 200px;
+    list-style: none;
+    border:1px solid gray;
+    border-radius: 5px;
+   
+    &__img{
+        margin:3%;
+        
+        &-src{
+            width: 100%;
+            transform: all 1s;
+        }
+    }
+    .details{
+        color:#677272;
+        font-size: 14px;
+    }
+    &__description{
+        padding-left: 5%;
+    }
+    &:hover{
+        cursor: pointer;
+    }
+}

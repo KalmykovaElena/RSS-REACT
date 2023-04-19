@@ -1,0 +1,19 @@
+.persistent-form{
+
+    &__input{
+        height: 7%;
+        width: 20%;
+        background-color: rgba(65, 91, 119, 0.35);
+        color:#ffffff;
+        font-size: 1.5rem;
+        margin-right: 10px;
+        position: relative;
+        top: -2rem;
+        border-radius: 5px;
+    }
+}
+.search{
+    &:hover{
+        cursor: pointer;
+    }
+}
